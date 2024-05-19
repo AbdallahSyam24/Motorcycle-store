@@ -1,0 +1,59 @@
+<div class="container">
+  <section class="text-center text-lg-start section">
+    <div class="card mb-3">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <img
+            src="https://i.pinimg.com/originals/24/ca/49/24ca4999b531aedf3b94641a07a11ca4.jpg"
+            alt="Trendy Pants and Shoes"
+            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
+          />
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+            <div *ngIf="successMessage" class="alert alert-success">
+              {{ successMessage }}
+            </div>
+
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+
+            <form #loginForm="ngForm" (ngSubmit)="handleSubmit(loginForm)">
+              <div class="form-outline mb-4">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  ngModel
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  ngModel
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="row mb-4">
+                <div class="col">
+                  <span>Don't have an account? </span>
+                  <a routerLink="/registration">Sign Up</a>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign in
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

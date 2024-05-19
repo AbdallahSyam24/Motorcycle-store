@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <div class="row">
+    <form #createData="ngForm" (ngSubmit)="handleSubmit(createData)">
+      <div class="form-group col-lg-6">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" ngModel required />
+      </div>
+      <br />
+      <div class="form-group col-lg-6">
+        <label>CC</label>
+        <input type="number" class="form-control" name="cc" ngModel required />
+      </div>
+      <br />
+      <div class="form-group col-lg-6">
+        <label>Year</label>
+        <input
+          type="number"
+          class="form-control"
+          name="year"
+          ngModel
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group col-lg-6">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

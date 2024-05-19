@@ -1,0 +1,96 @@
+<div *ngIf="formData" class="container">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div style="text-align: -webkit-right">
+    <button type="button" class="btn btn-success" routerLink="/addView">
+      Add
+    </button>
+  </div>
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Year</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let manufacture of formData">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src="{{ manufacture.logo }}"
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ manufacture.name }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ manufacture.country }}</p>
+        </td>
+        <td>
+          <span class="fw-normal mb-1">{{ manufacture.year }}</span>
+        </td>
+        <td>
+          <div class="row" style="display:flex">
+            <div class="col-lg-3 d-flex justify-content-center">
+              <button
+                type="button"
+                routerLink="/{{ manufacture._id }}/models"
+                class="btn btn-info"
+              >
+                Models
+              </button>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-center">
+              <button
+                type="button"
+                routerLink="/editView/{{ manufacture._id }}"
+                class="btn btn-warning"
+              >
+                Edit
+              </button>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-center">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="handleDelete(manufacture._id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <nav>
+    <ul class="pagination" style="place-content: center">
+      <li class="page-item" *ngIf="offset > 0">
+        <a
+          class="page-link"
+          style="cursor: pointer"
+          (click)="prev()"
+          tabindex="-1"
+          >Previous</a
+        >
+      </li>
+
+      <li class="page-item" *ngIf="formData.length == 5">
+        <a class="page-link" style="cursor: pointer" (click)="next()">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
